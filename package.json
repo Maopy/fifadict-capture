@@ -1,0 +1,23 @@
+{
+  "name": "fifadict-capture",
+  "version": "0.0.1",
+  "description": "抓取泰服 FIFA Online3 数据库",
+  "main": "index.js",
+  "scripts": {
+    "start": "casperjs index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Maopy/fifadict-capture.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Maopy/fifadict-capture/issues"
+  },
+  "homepage": "https://github.com/Maopy/fifadict-capture#readme",
+  "dependencies": {
+    "casperjs": "^1.1.3"
+  }
+}
