@@ -8,5 +8,6 @@ fetch('http://cn.fifaaddict.com/fo3player.php?id=93190043')
     return res.text()
   })
   .then((body) => {
-    // console.log(body, 213)
+    let $ = cheerio.load(body)
+    console.log($('.player_name a').text().trim())
   })
