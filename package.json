@@ -4,7 +4,8 @@
   "description": "抓取泰服 FIFA Online3 数据库",
   "main": "index.js",
   "scripts": {
-    "start": "casperjs index.js",
+    "start": "node index.js",
+    "startcas": "casperjs index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,6 +19,7 @@
   },
   "homepage": "https://github.com/Maopy/fifadict-capture#readme",
   "dependencies": {
-    "casperjs": "^1.1.3"
+    "cheerio": "^0.20.0",
+    "node-fetch": "^1.5.3"
   }
 }
