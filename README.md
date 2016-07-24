@@ -6,8 +6,7 @@
 ## Install
 
 ```bash
-  $ brew install phantomjs
-  $ npm install casperjs -S
+  $ npm install
 ```
 
 ## Usage
