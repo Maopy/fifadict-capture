@@ -10,7 +10,10 @@ module.exports = (playerId) => {
     })
     .then((body) => {
       let $ = cheerio.load(body)
-      console.log($('.player_name a').text().trim())
-      return $('.player_name a').text().trim()
+      return {
+        playerName: $('.player_name a').text().trim(),
+        nation: $('.player_nation b').text().trim(),
+        club: $('.player_club b').text().trim()
+      }
     })
 }
