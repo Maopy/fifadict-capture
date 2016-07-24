@@ -1,13 +1,8 @@
 'use strict'
 
-const fetch = require('node-fetch')
-const cheerio = require('cheerio')
+const fetchPlayer = require('./player')
 
-fetch('http://cn.fifaaddict.com/fo3player.php?id=93190043')
-  .then((res) => {
-    return res.text()
-  })
-  .then((body) => {
-    let $ = cheerio.load(body)
-    console.log($('.player_name a').text().trim())
+fetchPlayer(93190043)
+  .then((name) => {
+    console.log(name, 1)
   })
