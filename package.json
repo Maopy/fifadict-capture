@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/Maopy/fifadict-capture#readme",
   "dependencies": {
+    "bluebird": "^3.4.1",
     "cheerio": "^0.20.0",
     "node-fetch": "^1.5.3"
   }

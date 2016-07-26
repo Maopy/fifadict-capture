@@ -10,5 +10,5 @@ fetchPlayer(93190043)
 
 fetchId()
   .then((ids) => {
-    console.log(ids, 222)
+    console.log(ids, ids.length)
   })
