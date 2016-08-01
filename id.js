@@ -6,12 +6,13 @@ const cheerio = require('cheerio')
 const Promise = require('bluebird')
 
 const leagueDB = require('./league.json')
+const LIMIT = 500
 let idList = {}
 let errorList = []
-let hundredList = []
+let total = 0
 
 let fetchId = (league, club) => {
-  return fetch(`http://cn.fifaaddict.com/fo3db.php?q=player&league=${league}&club=${club}`, {
+  return fetch(`http://cn.fifaaddict.com/fo3db.php?q=player&league=${league}&club=${club}&limit=${LIMIT}`, {
     timeout: 1000 * 10
   })
     .then((res) => {
@@ -20,13 +21,11 @@ let fetchId = (league, club) => {
     .then((body) => {
       let $ = cheerio.load(body)
       let $pr = $('.player-row')
-      $pr.each((i, p) => {
+      $pr.length !== LIMIT && $pr.each((i, p) => {
         idList[league].push($(p).attr('id').substring(9))
       })
+      total += $pr.length
       console.log(`${league} ${club} success ${$pr.length}`)
-      if ($pr.length === 100) {
-        hundredList.push(`${league} ${club}`)
-      }
       return idList[league]
     })
     .catch((err) => {
@@ -49,7 +48,20 @@ let fetchDB = () => {
   })
     .then(() => {
       console.log(errorList)
-      console.log(hundredList)
+      return Promise.mapSeries(errorList, (e) => {
+        let t = e.split(' ')
+        return fetchId(t[0], t[1])
+      })
+        .then((res) => {
+          res.map((e, i) => {
+            let t = errorList[i].split(' ')
+            fs.writeFileSync(`id/${t[0]}_id.json`, JSON.stringify(idList[t[0]]))
+            console.log(`${t[0]} ${idList[t[0]].length}`)
+          })
+        })
+    })
+    .then(() => {
+      console.log(total)
     })
 }
 
