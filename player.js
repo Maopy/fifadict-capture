@@ -3,7 +3,7 @@
 const fetch = require('node-fetch')
 const cheerio = require('cheerio')
 
-module.exports = (playerId) => {
+let fetchOne = (playerId) => {
   return fetch(`http://cn.fifaaddict.com/fo3player.php?id=${playerId}`)
     .then((res) => {
       return res.text()
@@ -16,4 +16,9 @@ module.exports = (playerId) => {
         club: $('.player_club b').text().trim()
       }
     })
+    .then((stat) => {
+      console.log(JSON.stringify(stat))
+    })
 }
+
+fetchOne(93190043)

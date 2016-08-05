@@ -1,6 +1,6 @@
 {
   "name": "fifadict-capture",
-  "version": "0.2.1",
+  "version": "0.3.1",
   "description": "抓取泰服 FIFA Online3 数据库",
   "main": "index.js",
   "scripts": {
